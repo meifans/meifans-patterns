@@ -1,7 +1,6 @@
 package github.meifans.hello.configuration;
 
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -24,7 +23,7 @@ public class MyConfiguration {
      * 
      * @return
      */
-    @Bean
+    // @Bean
     public HttpMessageConverters customConverers() {
         HttpMessageConverter<?> additional = new StringHttpMessageConverter();
         HttpMessageConverter<?> another = new MappingJackson2HttpMessageConverter();
@@ -38,7 +37,7 @@ public class MyConfiguration {
      * 
      * @return
      */
-    @Bean
+    // @Bean
     public ConfigurableWebBindingInitializer customDateBinder() {
         @SuppressWarnings("unused")
         WebDataBinder binder;

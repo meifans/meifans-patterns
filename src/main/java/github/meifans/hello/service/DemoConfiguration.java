@@ -1,7 +1,6 @@
 package github.meifans.hello.service;
 
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * if want to scan different package(not package of the class),only to wirte
@@ -16,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @ComponentScan // 扫描这个类所在的包和下级包内的component
-@Configuration
+// @Configuration
 public class DemoConfiguration {
 
 }
