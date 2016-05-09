@@ -7,6 +7,7 @@ public class CustomErrorType {
 
     private long timestamp;
     private int code;
+
     private String message;
     private String data;
 

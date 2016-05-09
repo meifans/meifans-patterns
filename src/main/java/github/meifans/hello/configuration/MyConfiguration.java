@@ -11,7 +11,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 /**
@@ -19,7 +18,7 @@ import org.springframework.web.filter.DelegatingFilterProxy;
  *
  */
 @Configuration
-public class MyConfiguration implements WebApplicationInitializer{
+public class MyConfiguration implements WebApplicationInitializer {
 
     /**
      * spring Mvc 使用HttpMessagerConverters接口转换Htpp和响应
@@ -51,16 +50,18 @@ public class MyConfiguration implements WebApplicationInitializer{
 
     }
 
-	/**
-	 * Configure the given {@link ServletContext} with any servlets, filters, listeners
-	 * context-params and attributes
-	 * @see org.springframework.web.WebApplicationInitializer#onStartup(javax.servlet.ServletContext)
-	 */
-	@Override
-	public void onStartup(ServletContext container) throws ServletException {
-		//the special  Filter delegate other Filter do it's homework in spring security 
-		container.addFilter("myfilter", new DelegatingFilterProxy());
-		
-	}
-    
+    /**
+     * Configure the given {@link ServletContext} with any servlets, filters,
+     * listeners context-params and attributes
+     * 
+     * @see org.springframework.web.WebApplicationInitializer#onStartup(javax.servlet.ServletContext)
+     */
+    @Override
+    public void onStartup(ServletContext container) throws ServletException {
+        // the special Filter delegate other Filter do it's homework in spring
+        // security
+        container.addFilter("myfilter", new DelegatingFilterProxy());
+
+    }
+
 }
