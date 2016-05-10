@@ -37,7 +37,7 @@ import github.meifans.hello.Application;
  * {Application.class})}换成{@ContextConfiguration(classes =
  * DemoConfiguration.class)} ，只能完成注入bean，无法解析{@Value}
  * 
- * @author Administrator
+ * @author meifans
  *
  */
 public class DemoAnnotationTest {
