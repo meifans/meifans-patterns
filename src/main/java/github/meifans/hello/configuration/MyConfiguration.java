@@ -1,20 +1,38 @@
 package github.meifans.hello.configuration;
 
+<<<<<<< HEAD
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
+=======
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+
+import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
+>>>>>>> 4e2b3ecdcaf74b4dd1bcc7916f861a7f184f84fa
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+<<<<<<< HEAD
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
+=======
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
+import org.springframework.web.filter.DelegatingFilterProxy;
+>>>>>>> 4e2b3ecdcaf74b4dd1bcc7916f861a7f184f84fa
 
 /**
  * @author meifans
  *
  */
 @Configuration
+<<<<<<< HEAD
 public class MyConfiguration {
+=======
+public class MyConfiguration implements WebApplicationInitializer {
+>>>>>>> 4e2b3ecdcaf74b4dd1bcc7916f861a7f184f84fa
 
     /**
      * spring Mvc 使用HttpMessagerConverters接口转换Htpp和响应
@@ -24,7 +42,11 @@ public class MyConfiguration {
      * 
      * @return
      */
+<<<<<<< HEAD
     @Bean
+=======
+    // @Bean
+>>>>>>> 4e2b3ecdcaf74b4dd1bcc7916f861a7f184f84fa
     public HttpMessageConverters customConverers() {
         HttpMessageConverter<?> additional = new StringHttpMessageConverter();
         HttpMessageConverter<?> another = new MappingJackson2HttpMessageConverter();
@@ -38,7 +60,11 @@ public class MyConfiguration {
      * 
      * @return
      */
+<<<<<<< HEAD
     @Bean
+=======
+    // @Bean
+>>>>>>> 4e2b3ecdcaf74b4dd1bcc7916f861a7f184f84fa
     public ConfigurableWebBindingInitializer customDateBinder() {
         @SuppressWarnings("unused")
         WebDataBinder binder;
@@ -46,4 +72,21 @@ public class MyConfiguration {
 
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Configure the given {@link ServletContext} with any servlets, filters,
+     * listeners context-params and attributes
+     * 
+     * @see org.springframework.web.WebApplicationInitializer#onStartup(javax.servlet.ServletContext)
+     */
+    @Override
+    public void onStartup(ServletContext container) throws ServletException {
+        // the special Filter delegate other Filter do it's homework in spring
+        // security
+        container.addFilter("myfilter", new DelegatingFilterProxy());
+
+    }
+
+>>>>>>> 4e2b3ecdcaf74b4dd1bcc7916f861a7f184f84fa
 }
