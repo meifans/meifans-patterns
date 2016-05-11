@@ -3,11 +3,10 @@ package github.meifans.hello.configuration;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
 
-@EnableRedisHttpSession // SessionRepositoryFilter ... to add session in redis
+//@EnableRedisHttpSession // SessionRepositoryFilter ... to add session in redis
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean
