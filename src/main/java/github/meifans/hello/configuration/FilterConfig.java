@@ -10,13 +10,12 @@ import javax.servlet.ServletException;
 
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import github.meifans.hello.filter.AuthenticationFilter;
 
-@Configuration
+//@Configuration
 public class FilterConfig implements WebApplicationInitializer {
 
     /**

@@ -14,8 +14,7 @@ import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
  */
 
 // @Configuration
-
-public class MyConfiguration {
+public class MVCConfiguration {
 
     /**
      * spring Mvc 使用HttpMessagerConverters接口转换Htpp和响应
@@ -47,4 +46,5 @@ public class MyConfiguration {
         WebDataBinder binder;
         return null;
     }
+
 }

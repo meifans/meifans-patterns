@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
@@ -45,6 +46,7 @@ import github.meifans.hello.Application;
  * @author meifans
  *
  */
+@ConfigurationProperties(prefix = "meifans.helloWorld.")
 public class DemoAnnotationTest {
 
     String name;
@@ -70,7 +72,6 @@ public class DemoAnnotationTest {
         // assertEquals("notEasyGoDai", password);
         assertEquals("grass_stars", rname);
 
-        assertNotNull(mockSession);
     }
 
 }
