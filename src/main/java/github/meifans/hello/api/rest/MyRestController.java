@@ -17,13 +17,14 @@ import github.meifans.hello.exception.MyException;
 
 @RestController
 @RequestMapping("/")
+
 public class MyRestController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MyRestController.class);
 
     @RequestMapping(value = "/hello/{user}", method = RequestMethod.GET)
     public String getUser(@PathVariable String user) {
-
+      
         return "hello," + user;
 
     }
