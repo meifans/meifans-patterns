@@ -46,7 +46,7 @@ import github.meifans.hello.Application;
  * @author meifans
  *
  */
-@ConfigurationProperties(prefix = "meifans.helloWorld.")
+@ConfigurationProperties(prefix = "meifans")
 public class DemoAnnotationTest {
 
     String name;
@@ -68,8 +68,8 @@ public class DemoAnnotationTest {
 
     @Test
     public void ConfigurationProperties() {
-        // assertEquals("grass_stars", name);
-        // assertEquals("notEasyGoDai", password);
+        assertEquals("grass_stars", name);
+        assertEquals("notEasyGoDai", password);
         assertEquals("grass_stars", rname);
 
     }
