@@ -41,10 +41,13 @@ import static org.junit.Assert.assertNotNull;
  *
  * @author meifans
  *
- */ @ConfigurationProperties(prefix = "meifans.helloWorld.") public class DemoAnnotationTest {
+ */
+@ConfigurationProperties(prefix = "meifans")
+public class DemoAnnotationTest {
 
-	String name;
-	private String password;
+    String name;
+    private String password;
+
 
 	@Value("${meifans.helloworld.name}") // origin
 	private String rname;
@@ -53,13 +56,15 @@ import static org.junit.Assert.assertNotNull;
 
 	@Autowired private MockHttpSession mockSession;
 
-	@Test public void demoNotNull() { // test get configuration or get bean
+	@Test
+	public void demoNotNull() { // test get configuration or get bean
 		assertNotNull(demoAnnotation);
 	}
 
-	@Test public void ConfigurationProperties() {
-		// assertEquals("grass_stars", name);
-		// assertEquals("notEasyGoDai", password);
+    @Test
+    public void ConfigurationProperties() {
+		assertEquals("grass_stars", name);
+		assertEquals("notEasyGoDai", password);
 		assertEquals("grass_stars", rname);
 	}
 
