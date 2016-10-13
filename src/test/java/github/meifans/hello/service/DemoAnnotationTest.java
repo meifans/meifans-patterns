@@ -49,23 +49,26 @@ public class DemoAnnotationTest {
     private String password;
 
 
-	@Value("${meifans.helloworld.name}") // origin
-	private String rname;
+    @Value("${meifans.helloworld.name}") // origin
+    private String rname;
 
-	@Autowired private DemoAnnotation demoAnnotation;
+    @Autowired
+    private DemoAnnotation demoAnnotation;
 
-	@Autowired private MockHttpSession mockSession;
+    @Autowired
+    private MockHttpSession mockSession;
 
-	@Test
-	public void demoNotNull() { // test get configuration or get bean
-		assertNotNull(demoAnnotation);
-	}
+    @Test
+    public void demoNotNull() { // test get configuration or get bean
+        assertNotNull(demoAnnotation);
+    }
 
     @Test
     public void ConfigurationProperties() {
-		assertEquals("grass_stars", name);
-		assertEquals("notEasyGoDai", password);
-		assertEquals("grass_stars", rname);
-	}
+        assertEquals("grass_stars", name);
+        assertEquals("notEasyGoDai", password);
+        assertEquals("grass_stars", rname);
+    }
+
 
 }
