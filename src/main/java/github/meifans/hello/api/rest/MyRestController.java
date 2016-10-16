@@ -6,9 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +45,7 @@ public class MyRestController {
 	@RequestMapping(value = "/redis/{user}",
 			method = RequestMethod.GET)
 	public String login(@PathVariable String user, HttpSession session, ServletRequest request,
-			ServletResponse response) {
+						ServletResponse response) {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 
@@ -56,4 +58,12 @@ public class MyRestController {
 
 	}
 
+	@RequestMapping(value = "/test/restTemplate", method = RequestMethod.POST)
+	public void testTemplate(@RequestBody TestPost body) {
+		LOGGER.info(body.getTitle());
+	}
+
+
+
 }
+

@@ -13,7 +13,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class) // have a Spring application context
 @ActiveProfiles("test") // read application-test.properties
@@ -52,16 +51,10 @@ public class DemoAnnotationTest {
     @Value("${meifans.helloworld.name}") // origin
     private String rname;
 
-    @Autowired
-    private DemoAnnotation demoAnnotation;
 
     @Autowired
     private MockHttpSession mockSession;
 
-    @Test
-    public void demoNotNull() { // test get configuration or get bean
-        assertNotNull(demoAnnotation);
-    }
 
     @Test
     public void ConfigurationProperties() {
