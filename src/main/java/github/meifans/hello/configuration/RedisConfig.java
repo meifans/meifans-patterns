@@ -1,8 +1,6 @@
 package github.meifans.hello.configuration;
 
 import org.springframework.cache.annotation.CachingConfigurerSupport;
-import org.springframework.session.web.http.HeaderHttpSessionStrategy;
-import org.springframework.session.web.http.HttpSessionStrategy;
 
 /**
  * <!-- <dependency> <groupId>org.springframework.boot</groupId>
@@ -30,8 +28,8 @@ public class RedisConfig extends CachingConfigurerSupport {
 	// We customize Spring Session’s HttpSession integration to use HTTP headers
 	// to convey the current session information instead of cookies.
 	// @Bean
-	public HttpSessionStrategy httpSessionStrategy() {
-		return new HeaderHttpSessionStrategy();
-	}
+	//public HttpSessionStrategy httpSessionStrategy() {
+	//	return new HeaderHttpSessionStrategy();
+	//}
 
 }
