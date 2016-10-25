@@ -10,6 +10,7 @@ public class Observer implements java.util.Observer {
     boolean informed = false;
     Object arg;
     Observable subject;
+    String phone="18706887307";
 
     @Override
     public void update(Observable o, Object arg) {
