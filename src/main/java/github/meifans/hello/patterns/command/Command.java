@@ -5,6 +5,5 @@ package github.meifans.hello.patterns.command;
  */
 public interface Command {
 
-
-	void execute() ;
+	void execute();
 }

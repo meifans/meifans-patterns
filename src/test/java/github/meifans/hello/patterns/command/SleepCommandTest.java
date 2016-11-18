@@ -24,10 +24,12 @@ public class SleepCommandTest {
 		ActiveObjectEngine engine = new ActiveObjectEngine();
 		SleepCommand sleepCommand = new SleepCommand(1000, engine, wakeup);
 		engine.addCommand(sleepCommand);
+
 		long currentTime = System.currentTimeMillis();
 		engine.run();
 		long sleepTime = System.currentTimeMillis() - currentTime;
 		log.info("" + sleepTime);
+
 		Assert.assertTrue(sleepTime >= 1000 && sleepTime < 1100);
 		Assert.assertTrue(commandExecuted);
 	}

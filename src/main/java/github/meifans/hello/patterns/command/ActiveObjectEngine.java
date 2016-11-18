@@ -7,9 +7,9 @@ import java.util.LinkedList;
  */
 public class ActiveObjectEngine {
 
-	LinkedList<Command> commands = new LinkedList<>();
+	private LinkedList<Command> commands = new LinkedList<>();
 
-	public void addCommand(Command c){
+	public void addCommand(Command c) {
 		commands.add(c);
 	}
 
@@ -20,6 +20,5 @@ public class ActiveObjectEngine {
 			c.execute();
 		}
 	}
-
 
 }
