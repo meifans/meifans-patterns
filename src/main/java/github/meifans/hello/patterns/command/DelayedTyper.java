@@ -15,6 +15,7 @@ public class DelayedTyper implements Command {
 		id = commandId;
 	}
 
+	/**模拟多线程的行为*/
 	public static void main(String[] args) {
 		engine.addCommand(new DelayedTyper(100, '1'));
 		engine.addCommand(new DelayedTyper(300, '3'));
@@ -22,14 +23,12 @@ public class DelayedTyper implements Command {
 		engine.addCommand(new DelayedTyper(700, '7'));
 
 		Command stopCommand = () -> stop = true;
-		engine.addCommand(new SleepCommand(2000,engine,stopCommand));
-		//engine.addCommand(stopCommand);
+		engine.addCommand(new SleepCommand(2000, engine, stopCommand));
 		engine.run();
 
 	}
 
 	public void execute() {
-		System.out.print(id);
 		if (!stop) {
 			delayAndRepeat();
 		}
