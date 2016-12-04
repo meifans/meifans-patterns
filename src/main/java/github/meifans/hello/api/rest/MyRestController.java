@@ -1,63 +1,45 @@
 package github.meifans.hello.api.rest;
 
+import github.meifans.hello.exception.LocalControllerException;
 import github.meifans.hello.exception.MyException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping
+@Slf4j
 public class MyRestController {
+    @GetMapping(value = "/hello/{user}")
+    public String getUser(@PathVariable String user) {
+        return "hello," + user;
+    }
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MyRestController.class);
+    @GetMapping(value = "/exception/{exceptionName}")
+    public String testControllerAdvice(@PathVariable String exceptionName) {
+        throw new MyException();
+    }
 
+    @GetMapping(value = "/exception/local")
+    public String testLocalHandlerException() {
+        throw new LocalControllerException();
+    }
 
-	@RequestMapping(value = "/hello/{user}",
-			method = RequestMethod.GET)
-	public String getUser(@PathVariable String user) {
+    @ExceptionHandler(LocalControllerException.class)
+    public ResponseEntity handleLocalException(LocalControllerException ex) {
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
-		return "hello," + user;
-
-	}
-
-	@RequestMapping(value = "/exception/{exceptionName}",
-			method = RequestMethod.GET)
-	public String getUser1(@PathVariable String exceptionName) {
-		LOGGER.info("exceptionName is :" + exceptionName);
-		throw new MyException();
-
-	}
-
-	@RequestMapping(value = "/redis/{user}",
-			method = RequestMethod.GET)
-	public String login(@PathVariable String user, HttpSession session, ServletRequest request,
-						ServletResponse response) {
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
-
-		session.setAttribute(user, user + " want to play a game");
-		LOGGER.info("URL:" + "{" + httpRequest.getRequestURL() + "}");
-		LOGGER.info("URI:" + "{" + httpRequest.getRequestURI() + "}");
-		LOGGER.info("x-auth-token:" + "{" + httpResponse.getHeader("x-auth-token") + "}");
-
-		return user;
-
-	}
-
-	@RequestMapping(value = "/test/restTemplate", method = RequestMethod.POST)
-	public void testTemplate(@RequestBody TestPost body) {
-		LOGGER.info(body.getTitle());
-	}
-
+    @GetMapping(value = "/test/restTemplate")
+    public void testTemplate(@RequestBody TestPost body) {
+        log.info(body.getTitle());
+    }
 
 
 }
