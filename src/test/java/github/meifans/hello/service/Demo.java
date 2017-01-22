@@ -1,7 +1,6 @@
 package github.meifans.hello.service;
 
 import org.junit.Test;
-
 public class Demo {
 
     @Test(expected = NullPointerException.class)
