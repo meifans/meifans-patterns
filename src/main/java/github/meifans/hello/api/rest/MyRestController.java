@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.file.NoSuchFileException;
+
 @RestController
 @RequestMapping
 @Slf4j
@@ -41,6 +43,10 @@ public class MyRestController {
         log.info(body.getTitle());
     }
 
+    @GetMapping("/test-error/")
+    public String testError() throws NoSuchFileException {
+        throw new NoSuchFileException("meifans");
+    }
 
 }
 
