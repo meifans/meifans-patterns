@@ -1,18 +1,19 @@
 package github.meifans.hello.service;
 
-import github.meifan.hello.configuration.TestConfiguration;
-import github.meifans.hello.Application;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.assertEquals;
+import github.meifans.hello.Application;
 
 @RunWith(SpringJUnit4ClassRunner.class) // have a Spring application context
 @ActiveProfiles("test") // read application-test.properties

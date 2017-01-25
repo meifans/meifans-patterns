@@ -1,16 +1,24 @@
 package github.meifans.hello;
 
-import org.joda.time.DateTime;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.TimeZone;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@SpringBootApplication
+import java.net.URL;
+import java.net.URLClassLoader;
+
+@SpringBootApplication
+@Slf4j
 public class Application {
 
   public static void main(String[] args) {
-    //SpringApplication.run(Application.class, args);
-    System.out.println("DateTime.now.toString:" + DateTime.now().toString());
-    System.out.println("time.zone:" + System.getProperty("user.timezone"));
-    System.out.println("TimeZone.getDefault:" + TimeZone.getDefault());
+    SpringApplication.run(Application.class, args);
+
+    ClassLoader systemloader = ClassLoader.getSystemClassLoader();
+    for (URL url : ((URLClassLoader) systemloader).getURLs()) {
+      log.info(url.getFile());
+    }
+
   }
 }

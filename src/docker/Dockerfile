@@ -1,4 +1,4 @@
-FROM registry.docker.yixinonline.org/java:oracle-8u101-jdk-alpine
+FROM ubuntu
 
 VOLUME /tmp
 
