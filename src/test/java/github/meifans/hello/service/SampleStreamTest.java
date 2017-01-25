@@ -3,9 +3,14 @@ package github.meifans.hello.service;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * Created by Meifans on 2016/10/21.
@@ -40,12 +45,21 @@ public class SampleStreamTest {
         return new Person(s);
     }
 
-    public static boolean matchFirst(String s) {
+    public boolean matchFirst(String s) {
+        Supplier<Runnable> ss = () -> () -> System.out.println("go");
+        Function<?, Runnable> ff = (String sb) -> {
+            System.out.println("g");
+            return () -> System.out.println("gogo");
+        };
+        Set<String> si = Collections.<String>emptySet();
+        Set is = Collections.emptySet();
+        Person<ArrayList> b = new Person<>(null);
+        Person<List> bb = new Person<List>(null);
 
         return s.equals("Yu");
     }
 
-    class Person {
+    class Person<T extends AbstractList> {
         String name;
         int old;
         String place;
@@ -55,7 +69,7 @@ public class SampleStreamTest {
         }
     }
 
-    class Demo implements Iterable<String>{
+    class Demo implements Iterable<String> {
 
         @Override
         public Iterator<String> iterator() {
