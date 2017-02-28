@@ -18,62 +18,62 @@ import java.util.function.Supplier;
 public class SampleStreamTest {
 
 
-    List<String> record;
+  List<String> record;
 
-    @Before
-    public void prepare() {
-        record = new ArrayList<>();
-        record.add("Yu");
-        record.add("si");
-        record.add("yu");
+  @Before
+  public void prepare() {
+    record = new ArrayList<>();
+    record.add("Yu");
+    record.add("si");
+    record.add("yu");
+  }
+
+  @Test
+  public void streamTest() {
+    String[] strings = {"", " "};
+    for (String s : strings) {
+      System.out.println(s);
+    }
+    Demo d = new Demo();
+    for (String s : d) {
+
     }
 
-    @Test
-    public void streamTest() {
-        String[] strings = {"", " "};
-        for (String s : strings) {
-            System.out.println(s);
-        }
-        Demo d = new Demo();
-        for (String s : d) {
+  }
 
-        }
+  private Person map(String s) {
+    return new Person(s);
+  }
 
+  public boolean matchFirst(String s) {
+    Supplier<Runnable> ss = () -> () -> System.out.println("go");
+    Function<?, Runnable> ff = (String sb) -> {
+      System.out.println("g");
+      return () -> System.out.println("gogo");
+    };
+    Set<String> si = Collections.<String>emptySet();
+    Set is = Collections.emptySet();
+    Person<ArrayList> b = new Person<>(null);
+//        Person<List> bb = new Person<List>(null);
+
+    return s.equals("Yu");
+  }
+
+  class Person<T extends AbstractList> {
+    String name;
+    int old;
+    String place;
+
+    public Person(String name) {
+      this.name = name;
     }
+  }
 
-    private Person map(String s) {
-        return new Person(s);
+  class Demo implements Iterable<String> {
+
+    @Override
+    public Iterator<String> iterator() {
+      return null;
     }
-
-    public boolean matchFirst(String s) {
-        Supplier<Runnable> ss = () -> () -> System.out.println("go");
-        Function<?, Runnable> ff = (String sb) -> {
-            System.out.println("g");
-            return () -> System.out.println("gogo");
-        };
-        Set<String> si = Collections.<String>emptySet();
-        Set is = Collections.emptySet();
-        Person<ArrayList> b = new Person<>(null);
-        Person<List> bb = new Person<List>(null);
-
-        return s.equals("Yu");
-    }
-
-    class Person<T extends AbstractList> {
-        String name;
-        int old;
-        String place;
-
-        public Person(String name) {
-            this.name = name;
-        }
-    }
-
-    class Demo implements Iterable<String> {
-
-        @Override
-        public Iterator<String> iterator() {
-            return null;
-        }
-    }
+  }
 }

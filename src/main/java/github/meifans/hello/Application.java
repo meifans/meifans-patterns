@@ -18,6 +18,7 @@ public class Application {
     ClassLoader systemloader = ClassLoader.getSystemClassLoader();
     for (URL url : ((URLClassLoader) systemloader).getURLs()) {
       log.info(url.getFile());
+
     }
 
   }
