@@ -1,6 +1,8 @@
 package github.meifans.hello.patterns.actor;
 
 
+import lombok.AllArgsConstructor;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -67,7 +69,17 @@ public class ThreadStyle {
       return null;
     }
   }
-  
+
+  @AllArgsConstructor
+  static class Message {
+    String url;
+  }
+
+  @AllArgsConstructor
+  static class Result {
+    String html;
+  }
+  static class UrlFetcher extends UntypedActor
 
 }
 
