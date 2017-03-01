@@ -1,4 +1,4 @@
-package github.meifans.hello.proxy;
+package github.meifans.hello.patterns.proxy;
 
 /**
  * Created by Meifans on 2016/9/6.

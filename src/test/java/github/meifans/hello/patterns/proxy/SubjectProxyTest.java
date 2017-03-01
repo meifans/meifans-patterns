@@ -1,4 +1,4 @@
-package github.meifans.hello.proxy;
+package github.meifans.hello.patterns.proxy;
 
 import org.junit.Assert;
 import org.junit.Test;

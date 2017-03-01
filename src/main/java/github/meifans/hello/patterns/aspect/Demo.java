@@ -1,4 +1,4 @@
-package github.meifans.hello.aspect;
+package github.meifans.hello.patterns.aspect;
 
 /**
  * Created by Meifans on 2016/8/9.

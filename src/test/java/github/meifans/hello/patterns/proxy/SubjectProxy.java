@@ -1,4 +1,4 @@
-package github.meifans.hello.proxy;
+package github.meifans.hello.patterns.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

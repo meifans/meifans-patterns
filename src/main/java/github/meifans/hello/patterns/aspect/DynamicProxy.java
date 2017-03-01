@@ -1,4 +1,4 @@
-package github.meifans.hello.aspect;
+package github.meifans.hello.patterns.aspect;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
