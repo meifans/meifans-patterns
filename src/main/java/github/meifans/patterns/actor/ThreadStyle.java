@@ -1,19 +1,17 @@
 package github.meifans.patterns.actor;
 
 
-import lombok.AllArgsConstructor;
-
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import akka.actor.UntypedActor;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
-
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
-import akka.actor.UntypedActor;
+import lombok.AllArgsConstructor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
@@ -33,7 +31,9 @@ public class ThreadStyle {
       String url = r + question;
       new Thread(() -> result.compareAndSet(null, responseFrom(url))).start();
     });
-    while (result.get() == null) ;
+    while (result.get() == null) {
+
+    }
     return result.get();
   }
 
@@ -43,7 +43,8 @@ public class ThreadStyle {
    */
   public static String getResultFromExecutors(String question, List<String> engines) {
 
-    ExecutorCompletionService<String> executor = new ExecutorCompletionService<>(Executors.newFixedThreadPool(5));
+    ExecutorCompletionService<String> executor = new ExecutorCompletionService<>(
+        Executors.newFixedThreadPool(5));
     engines.forEach(r -> executor.submit(
         () -> responseFrom(r + question))
     );
@@ -60,9 +61,9 @@ public class ThreadStyle {
    */
   public static String getResultFromParallel(String question, List<String> engines) {
     return engines.stream().parallel()
-                  .map(r -> responseFrom(r + question))
-                  .findAny()
-                  .get();
+        .map(r -> responseFrom(r + question))
+        .findAny()
+        .get();
   }
 
   private static String responseFrom(String url) {
@@ -82,17 +83,21 @@ public class ThreadStyle {
         Props.create(UntypedActor.class, () -> new Querier(question, engines, result)));
     actor.tell(new Object(), ActorRef.noSender());
 
-    while (result.get() == null) ;
+    while (result.get() == null) {
+      ;
+    }
     return result.get();
   }
 
   @AllArgsConstructor
   static class Message {
+
     String url;
   }
 
   @AllArgsConstructor
   static class Result {
+
     String html;
   }
 
@@ -111,6 +116,7 @@ public class ThreadStyle {
 
   @AllArgsConstructor
   static class Querier extends UntypedActor {
+
     private String question;
     private List<String> engines;
     private AtomicReference<String> result;
