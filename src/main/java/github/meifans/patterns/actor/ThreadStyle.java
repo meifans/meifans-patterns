@@ -79,7 +79,7 @@ public class ThreadStyle {
     AtomicReference<String> result = new AtomicReference<>();
 
     ActorRef actor = system.actorOf(
-        Props.create(() -> new Querier(question, engines, result)));
+        Props.create(UntypedActor.class, () -> new Querier(question, engines, result)));
     actor.tell(new Object(), ActorRef.noSender());
 
     while (result.get() == null) ;
