@@ -1,9 +1,11 @@
 package github.meifans.patterns.aspect;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Created by Meifans on 2016/8/9.
  */
-
+@Slf4j
 public class Demo implements DemoInterface {
 
   public static void main(String[] args) {
@@ -12,6 +14,6 @@ public class Demo implements DemoInterface {
   }
 
   public void sayHello() {
-    System.out.println("hello!");
+    log.info("hello!");
   }
 }

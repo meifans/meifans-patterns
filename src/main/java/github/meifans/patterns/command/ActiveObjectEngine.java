@@ -9,16 +9,16 @@ public class ActiveObjectEngine {
 
   private LinkedList<Command> commands = new LinkedList<>();
 
-  public void addCommand(Command c) {
-    commands.add(c);
-  }
-
   public void run() {
     while (!commands.isEmpty()) {
       Command c = commands.getFirst();
       commands.removeFirst();
       c.execute();
     }
+  }
+
+  public void addCommand(Command command) {
+    commands.add(command);
   }
 
 }

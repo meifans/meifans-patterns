@@ -11,26 +11,26 @@ import org.junit.Test;
 @Slf4j
 public class SleepCommandTest {
 
-	boolean commandExecuted;
+  boolean commandExecuted;
 
-	@Before
-	public void prepare() {
-		commandExecuted = false;
-	}
+  @Before
+  public void prepare() {
+    commandExecuted = false;
+  }
 
-	@Test
-	public void testSleep() {
-		Command wakeup = () -> commandExecuted = true;
-		ActiveObjectEngine engine = new ActiveObjectEngine();
-		SleepCommand sleepCommand = new SleepCommand(1000, engine, wakeup);
-		engine.addCommand(sleepCommand);
+  @Test
+  public void testSleep() {
+    Command wakeup = () -> commandExecuted = true;
+    ActiveObjectEngine engine = new ActiveObjectEngine();
+    SleepCommand sleepCommand = new SleepCommand(1000, engine, wakeup);
+    engine.addCommand(sleepCommand);
 
-		long currentTime = System.currentTimeMillis();
-		engine.run();
-		long sleepTime = System.currentTimeMillis() - currentTime;
-		log.info("" + sleepTime);
+    long currentTime = System.currentTimeMillis();
+    engine.run();
+    long sleepTime = System.currentTimeMillis() - currentTime;
+    log.info("" + sleepTime);
 
-		Assert.assertTrue(sleepTime >= 1000 && sleepTime < 1100);
-		Assert.assertTrue(commandExecuted);
-	}
+    Assert.assertTrue(sleepTime >= 1000 && sleepTime < 1100);
+    Assert.assertTrue(commandExecuted);
+  }
 }
