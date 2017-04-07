@@ -76,7 +76,7 @@ public interface Singleton {
 
     public static DoubleSingleton getInstance() {
       if (instance == null) {
-        synchronized (instance) {
+        synchronized (DoubleSingleton.class) {
           if (instance == null) {
             instance = new DoubleSingleton();
           }
