@@ -11,9 +11,15 @@ public class Demo implements DemoInterface {
   public static void main(String[] args) {
     DemoInterface result = (DemoInterface) new DynamicProxy().bindProxy(new Demo());
     result.sayHello();
+    result.sayGoodbye();
   }
 
   public void sayHello() {
     log.info("hello!");
+  }
+
+  @Override
+  public void sayGoodbye() {
+    log.info("goodbye!");
   }
 }

@@ -5,5 +5,6 @@ package github.meifans.patterns.aspect;
  */
 public interface DemoInterface {
   void sayHello();
+  void sayGoodbye();
 
 }
